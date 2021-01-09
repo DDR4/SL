@@ -1,0 +1,6 @@
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\bin\Debug\SL.Common.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\bin\Debug\SL.Common.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.csproj.CoreCompileInputs.cache
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.csprojAssemblyReference.cache

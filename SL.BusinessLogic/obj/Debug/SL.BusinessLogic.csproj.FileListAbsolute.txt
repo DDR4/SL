@@ -1,0 +1,15 @@
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.BusinessLogic.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.BusinessLogic.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.Common.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.DataAccess.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.Entities.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\Dapper.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.Common.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.DataAccess.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\SL.Entities.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\bin\Debug\Dapper.xml
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.csprojAssemblyReference.cache
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.csproj.CoreCompileInputs.cache
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.csproj.CopyComplete
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.pdb

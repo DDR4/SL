@@ -1,0 +1,13 @@
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.DataAccess.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.DataAccess.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\Dapper.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.Common.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.Entities.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.Common.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\SL.Entities.pdb
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\bin\Debug\Dapper.xml
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.csprojAssemblyReference.cache
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.csproj.CoreCompileInputs.cache
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.csproj.CopyComplete
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.dll
+F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.pdb
