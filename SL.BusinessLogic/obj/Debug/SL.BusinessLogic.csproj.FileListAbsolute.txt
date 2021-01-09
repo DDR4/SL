@@ -13,3 +13,16 @@ F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\o
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.csproj.CopyComplete
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.dll
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.BusinessLogic.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.BusinessLogic.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.Common.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.DataAccess.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.Entities.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\Dapper.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.Common.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.DataAccess.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\SL.Entities.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\bin\Debug\Dapper.xml
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.BusinessLogic\obj\Debug\SL.BusinessLogic.pdb

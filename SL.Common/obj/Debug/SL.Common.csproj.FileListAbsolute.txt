@@ -4,3 +4,8 @@ F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debu
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.dll
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.pdb
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.Common\obj\Debug\SL.Common.csprojAssemblyReference.cache
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.Common\bin\Debug\SL.Common.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.Common\bin\Debug\SL.Common.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.Common\obj\Debug\SL.Common.csprojResolveAssemblyReference.cache
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.Common\obj\Debug\SL.Common.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.Common\obj\Debug\SL.Common.pdb

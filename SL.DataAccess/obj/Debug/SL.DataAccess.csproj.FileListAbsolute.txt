@@ -11,3 +11,14 @@ F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.csproj.CopyComplete
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.dll
 F:\EVV_Personal\Proyectos Personales\Tienda_S&L\Web S&L - GIT\SL.DataAccess\obj\Debug\SL.DataAccess.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.DataAccess.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.DataAccess.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\Dapper.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.Common.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.Entities.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.Common.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\SL.Entities.pdb
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\bin\Debug\Dapper.xml
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\obj\Debug\SL.DataAccess.csprojResolveAssemblyReference.cache
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\obj\Debug\SL.DataAccess.dll
+D:\Trabajo y Estudio\Proyectos Personales\S&L\Proyecto SL\SL.DataAccess\obj\Debug\SL.DataAccess.pdb

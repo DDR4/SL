@@ -18,6 +18,18 @@ namespace SL.BusinessLogic
             repository = new DAUsuario();
         }
 
+        public Response<IEnumerable<Usuario>> GetUsuario(Usuario obj)
+        {
+            try
+            {
+                var result = repository.GetUsuario(obj);
+                return new Response<IEnumerable<Usuario>>(result);
+            }
+            catch (Exception ex)
+            {
+                return new Response<IEnumerable<Usuario>>(ex);
+            }
+        }
 
         public Response<int> Registrar(Usuario obj)
         {
