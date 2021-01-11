@@ -3,3 +3,6 @@
 ################################################################################
 
 /SL.BusinessLogic/bin/Release
+/SL.BusinessLogic/bin/Release/Dapper.dll
+*.dll
+*.pdb

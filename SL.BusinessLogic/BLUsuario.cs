@@ -31,11 +31,24 @@ namespace SL.BusinessLogic
             }
         }
 
-        public Response<int> Registrar(Usuario obj)
+        public Response<int> InsertUpdateUsuario(Usuario obj)
         {
             try
             {
-                var result = repository.Registrar(obj);
+                var result = repository.InsertUpdateUsuario(obj);
+                return new Response<int>(result);
+            }
+            catch (Exception ex)
+            {
+                return new Response<int>(ex);
+            }
+        }
+
+        public Response<int> DeleteUsuario(Usuario obj)
+        {
+            try
+            {
+                var result = repository.DeleteUsuario(obj);
                 return new Response<int>(result);
             }
             catch (Exception ex)

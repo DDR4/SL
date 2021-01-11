@@ -26,6 +26,10 @@ namespace WebSL.Controllers
         {
             var ctx = HttpContext.GetOwinContext();
             var tipoUsuario = ctx.Authentication.User.Claims.FirstOrDefault().Value;
+            obj.Auditoria = new Auditoria
+            {
+                TipoUsuario = tipoUsuario
+            };
 
             string draw = Request.Form.GetValues("draw")[0];
             int inicio = Convert.ToInt32(Request.Form.GetValues("start").FirstOrDefault());
@@ -55,10 +59,18 @@ namespace WebSL.Controllers
             return Json(result);
         }
 
-        public JsonResult Registrar(Usuario obj)
+        public JsonResult InsertUpdateUsuario(Usuario obj)
         {
             var bussingLogic = new SL.BusinessLogic.BLUsuario();
-            var response = bussingLogic.Registrar(obj);
+            var response = bussingLogic.InsertUpdateUsuario(obj);
+
+            return Json(response);
+        }
+
+        public JsonResult DeleteUsuario(Usuario obj)
+        {
+            var bussingLogic = new SL.BusinessLogic.BLUsuario();
+            var response = bussingLogic.DeleteUsuario(obj);
 
             return Json(response);
         }
