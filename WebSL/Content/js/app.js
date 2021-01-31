@@ -760,7 +760,7 @@
 
 
     function ValidarCampo(valor, msg) {
-        if (valor === "" || valor === null || valor === 0 || valor === undefined || valor === 0.00) {
+        if (valor === "" || valor === null || valor === "0" || valor === 0 || valor === undefined || valor === "0.00"|| valor === 0.00) {
             return msg + "<br>";
         }
         return "";

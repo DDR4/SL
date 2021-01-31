@@ -7,7 +7,6 @@
     var $tipoMarca = $('#tipoMarca');
     var $tipoEstado = $('#tipoEstado');
 
-    var $txtCodigo = $('#txtCodigo');
     var $txtMarca = $('#txtMarca');
     var $cboEstado = $('#cboEstado');
 
@@ -24,13 +23,14 @@
     var $txtModalTalla = $('#txtModalTalla');
     var $txtModalPrecio = $('#txtModalPrecio');
     var $txtModalStock = $('#txtModalStock');
+
     var $btnSaveProducto = $('#btnSaveProducto');
-    var $txtModalTallaVendida = $('#txtModalTallaVendida');
     var $txtModalCantidad = $('#txtModalCantidad');
 
     var $btnAgregarTalla = $('#btnAgregarTalla');
     var $tblListadoTallas = $('#tblListadoTallas');
     var $cboModalTipoProducto = $('#cboModalTipoProducto');
+    var $cboModalEstacion = $('#cboModalEstacion');
     var $cboModalEstado = $('#cboModalEstado');
 
     var $btnGenerarExcel = $('#btnGenerarExcel');
@@ -67,7 +67,6 @@
         app.Event.ForceNumericOnly($txtModalCodigo);
         app.Event.Number($txtModalStock);
         app.Event.ForceDecimalOnly($txtModalPrecio);
-        app.Event.Number($txtCodigo);
 
         app.Event.Blur($txtModalPrecio, "N");
 
@@ -95,14 +94,11 @@
         $tipoMarca.hide();
         $tipoEstado.hide();
 
-        $txtCodigo.val("");
         $txtMarca.val("");
         $cboEstado.val(0);
 
-        if (codSelec === "1") {
-            $tipoCodigo.show();
-        }
-        else if (codSelec === "2") {
+  
+        if (codSelec === "2") {
             $tipoMarca.show();
         }
         else if (codSelec === "3") {
@@ -180,13 +176,10 @@
         var flag = true;
         var br = "<br>";
         var msg = "";
-        var Cod_Prod = $txtModalCodigo.val();
-        var Marca_Prod = $txtModalMarca.val();
-        var Precio_Prod = $txtModalPrecio.val();
 
-        msg += app.ValidarCampo(Cod_Prod, "• El código.");
-        msg += app.ValidarCampo(Marca_Prod, "• La marca.");
-        msg += app.ValidarCampo(Precio_Prod, "• El precio.");
+        msg += app.ValidarCampo($cboModalEstacion.val(), "• La estación.");
+        msg += app.ValidarCampo($txtModalMarca.val(), "• La marca.");
+        msg += app.ValidarCampo($txtModalPrecio.val(), "• El precio.");
         msg += app.ValidarCampo($cboModalTipoProducto.val(), "• El tipo de producto.");
         msg += app.ValidarCampo($cboModalEstado.val(), "• El estado.");
         if (dataTallas.Data.length === 0) {
@@ -210,14 +203,10 @@
 
         var vcboTipoBusqueda = parseInt($cboTipoBusqueda.val());
 
-        var Cod_Prod = $txtCodigo.val().trim();
         var Marca_Prod = $txtMarca.val().trim();
         var Estado_Prod = $cboEstado.val().trim();
 
         switch (vcboTipoBusqueda) {
-            case 1:
-                msg += app.ValidarCampo(Cod_Prod, "• El código.");
-                break;
             case 2:
                 msg += app.ValidarCampo(Marca_Prod, "• La marca.");
                 break;
@@ -244,7 +233,7 @@
         dataTallas.Data.map(function (v, i) {
             var objtalla = {
                 "Talla": v.Talla,
-                "CodigoProducto": $txtModalCodigo.val(),
+                "IdProducto": Global.IdProducto,
                 "Cantidad": v.Cantidad
             };
             tallas.push(objtalla);
@@ -252,12 +241,12 @@
 
         var obj = {
             "IdProducto": Global.IdProducto,
-            "Cod_Prod": $txtModalCodigo.val(),
-            "Marca_Prod": $txtModalMarca.val(),
-            "Tallas_Prod": tallas,
-            "Precio_Prod": app.UnformatNumber($txtModalPrecio.val()),
             "Tipo_Prod": $cboModalTipoProducto.val(),
-            "Estado_Prod": $cboModalEstado.val()
+            "Marca_Prod": $txtModalMarca.val(),               
+            "Precio_Prod": app.UnformatNumber($txtModalPrecio.val()),
+            "Estacion_Prod": $cboModalEstacion.val(),           
+            "Estado_Prod": $cboModalEstado.val(),
+            "Tallas_Prod": tallas
         };
         var method = "POST";
         var url = "Producto/InsertUpdateProducto";
@@ -274,7 +263,6 @@
 
     function GetProducto() {
         var parms = {
-            Cod_Prod: $txtCodigo.val(),
             Marca_Prod: $txtMarca.val(),
             Estado_Prod: $cboEstado.val()
         };
@@ -283,16 +271,27 @@
 
 
         var columns = [
-            { data: "Cod_Prod" },
-            { data: "Stock_Prod" },
+            { data: "Tipo_Prod" },
             { data: "Marca_Prod" },
+            { data: "Stock_Prod" },
             { data: "Precio_Prod" },
             { data: "Estado_Prod" },
             { data: "FechaDesde" },
             { data: "Auditoria.TipoUsuario" }
 
         ];
+        var msj = "";
         var columnDefs = [
+            {
+                "targets": [0],
+                'render': function (data, type, full, meta) {
+                    data === 1 ? msj = "Polo" : data === 2 ? msj = "Vestido" : data === 3 ? msj = "Cafarena" :
+                    data === 4 ? msj = "Chompa" : data === 5 ? msj = "Short" : data === 6 ? msj = "Pantalon" :
+                    data === 7 ? msj = "Falda" : data === 8 ? msj = "Zapatilla" : data === 9 ? msj = "Blusa" :
+                    data === 10 ? msj = "Camisa" : msj = "";
+                    return msj;
+                }
+            },
             {
                 "targets": [3],
                 "className": "text-right",
@@ -370,6 +369,7 @@
         app.Event.Disabled($txtModalCodigo);
         app.Event.Enable($cboModalEstado);
         $cboModalEstado.val(data.Estado_Prod).trigger('change');
+        $cboModalEstacion.val(data.Estacion_Prod).trigger('change');
         $cboModalTipoProducto.val(data.Tipo_Prod).trigger('change');
         FillTableTalla(data);
     }
@@ -398,7 +398,7 @@
         dataTallas = { Data: [] };
 
         var obj = {
-            "Cod_Prod": data.Cod_Prod
+            "IdProducto": data.IdProducto
         };
 
         var method = "POST";
@@ -486,7 +486,6 @@
     function GenerarExcel() {
 
         var data = {
-            Cod_Prod: $txtCodigo.val(),
             Marca_Prod: $txtMarca.val(),
             Estado_Prod: $cboEstado.val(),
             FechaDesde: app.ConvertDatetimeToInt($txtFechaDesde.val(), '/'),

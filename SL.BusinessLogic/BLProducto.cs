@@ -71,11 +71,11 @@ namespace SL.BusinessLogic
             }
         }
 
-        public Response<IEnumerable<Tallas>> TallasProducto(string cod_prod)
+        public Response<IEnumerable<Tallas>> TallasProducto(string IdProducto)
         {
             try
             {
-                var result = repository.TallasProducto(cod_prod);
+                var result = repository.TallasProducto(IdProducto);
                 return new Response<IEnumerable<Tallas>>(result);
             }
             catch (Exception ex)

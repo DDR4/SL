@@ -72,7 +72,7 @@ namespace WebSL.Controllers
 
             var tallasxml = obj.Tallas_Prod.Select(i => new XElement("Talla",
                         new XElement("talla", i.Talla),
-                        new XElement("cod_prod", i.CodigoProducto),
+                        new XElement("idproducto", i.IdProducto),
                         new XElement("cantidad", i.Cantidad)));
             obj.TallasXml = new XDocument(new XDeclaration("1.0", "utf-8", "yes"), new XElement("Tallas", tallasxml));
 
@@ -183,9 +183,7 @@ namespace WebSL.Controllers
                 row = sheet.CreateRow(rownum++);
 
                 sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Cod_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Stock_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Codigo_Al, styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Marca_Prod, styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Talla_Prod, styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Talla_Vendida_Prod, styleBody); sheet.AutoSizeColumn(cellnum);
@@ -213,10 +211,10 @@ namespace WebSL.Controllers
 
         }
 
-        public JsonResult TallasProducto(string Cod_Prod)
+        public JsonResult TallasProducto(string IdProducto)
         {
             var bussingLogic = new SL.BusinessLogic.BLProducto();
-            var response = bussingLogic.TallasProducto(Cod_Prod);
+            var response = bussingLogic.TallasProducto(IdProducto);
 
             return Json(response);
         }

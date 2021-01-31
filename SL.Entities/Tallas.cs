@@ -9,7 +9,7 @@ namespace SL.Entities
     public class Tallas
     {
         public string Talla { get; set; }
-        public int CodigoProducto { get; set; }
+        public int IdProducto { get; set; }
         public int Cantidad { get; set; }
     }
 }
