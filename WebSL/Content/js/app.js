@@ -385,26 +385,27 @@
     function FillComboBox(selector, data, selectorParent, isSelected) {
         if (isSelected) {
             var item = data.Data[0];
+            var obj;
             if (item.Id !== null && item.Name !== null) {
-                var obj = {
+                obj = {
                     Id: "-1",
                     Name: ""
                 };
                 data.Data.splice(0, 0, obj);
             } else if (item.Id !== null && item.Description !== null) {
-                var obj = {
+                obj = {
                     Id: "-1",
                     Description: ""
                 };
                 data.Data.splice(0, 0, obj);
             } else if (item.Id !== null && item.Text !== null) {
-                var obj = {
+                obj = {
                     Id: "-1",
                     Text: ""
                 };
                 data.Data.splice(0, 0, obj);
             } else if (item.Value !== null && item.Text !== null) {
-                var obj = {
+                obj = {
                     Value: "-1",
                     Text: ""
                 };
@@ -705,6 +706,14 @@
 
         }
 
+        function UpperCase($control) {
+            $control.on("keypress", function () {
+                $control = $(this);
+                setTimeout(function () {
+                    $control.val($control.val().toUpperCase());
+                }, 50);
+            });
+        }
 
         return {
             Disabled: Disabled,
@@ -716,7 +725,8 @@
             ForceDecimalOnly: ForceDecimalOnly,
             Blur: Blur,
             Number: Number,
-            SetDateDatepicket: SetDateDatepicket
+            SetDateDatepicket: SetDateDatepicket,
+            UpperCase: UpperCase
         };
 
     })($, win, doc);

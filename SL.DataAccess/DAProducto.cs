@@ -100,7 +100,6 @@ namespace SL.DataAccess
             {
                 connection.Open();
                 var parm = new DynamicParameters();
-                parm.Add("@IdProducto", obj.IdProducto);
                 parm.Add("@Marca_Prod", obj.Marca_Prod);
                 parm.Add("@Estado", obj.Estado_Prod);
                 parm.Add("@FechaDesde", obj.FechaDesde);
@@ -113,10 +112,9 @@ namespace SL.DataAccess
                      .Select(m => m as IDictionary<string, object>)
                      .Select(n => new Producto
                      {
-                         Stock_Prod = n.Single(d => d.Key.Equals("Stock_Prod")).Value.Parse<int>(),
+                         Tipo_Prod = n.Single(d => d.Key.Equals("Tipo_Prod")).Value.Parse<int>(),
                          Marca_Prod = n.Single(d => d.Key.Equals("Marca_Prod")).Value.Parse<string>(),
-                         Talla_Prod = n.Single(d => d.Key.Equals("Talla_Prod")).Value.Parse<string>(),
-                         Talla_Vendida_Prod = n.Single(d => d.Key.Equals("Talla_Vendida_Prod")).Value.Parse<string>(),
+                         Stock_Prod = n.Single(d => d.Key.Equals("Stock_Prod")).Value.Parse<int>(),                         
                          Precio_Prod = n.Single(d => d.Key.Equals("Precio_Prod")).Value.Parse<double>(),
                          Estado_Prod = n.Single(d => d.Key.Equals("Estado_Prod")).Value.Parse<int>(),
                          FechaDesde = n.Single(d => d.Key.Equals("Fecha")).Value.Parse<int>()

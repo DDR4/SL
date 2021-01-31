@@ -83,8 +83,9 @@
         $txtFechaDesde.datepicker({
             endDate: "today",
             todayHighlight: true
-        });
-               
+        });               
+
+        app.Event.UpperCase($txtModalTalla);
     }
 
     function $cboTipoBusqueda_change() {
@@ -510,6 +511,7 @@
             $txtFechaDesde.val("");
         }
     }
+
 
 
     return {

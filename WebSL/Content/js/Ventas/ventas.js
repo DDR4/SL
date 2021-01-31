@@ -105,41 +105,29 @@
 
     function $cboTipoBusqueda_change() {
         var codSelec = $(this).val();
-        $tipoCodigo.hide();
         $tipoFecha.hide();
-        $tipoMarca.hide();
-        $tipoTalla.hide();
 
-        if (codSelec === "1") {
-            $tipoCodigo.show();
-        } else if (codSelec === "2") {
+        if (codSelec === "0") {
+            $txtFecha.val(null);
+        } else if (codSelec === "1") {
             $tipoFecha.show();
-        } else if (codSelec === "3") {
-            $tipoMarca.show();
-        } else if (codSelec === "4") {
-            $tipoTalla.show();
-        } else if (codSelec === "5") {
-            $txtCodigo.val(null); $txtFecha.val(null);
-            $txtMarca.val(null); $txtTalla.val(null);
         }
-
-
     }
 
     function $cboTipoBusquedaModal_change() {
 
         var codSelec = $(this).val();
-        //$('#form1')[0].reset();
         $('#tipoCodigoModal').hide();
         $('#tipoMarcaModal').hide();
 
         $txtCodigoModal.val("");
         $txtMarcaModal.val("");
 
-        if (codSelec === "1") {
-            $('#tipoCodigoModal').show();
-        }
-        else if (codSelec === "2") {
+        //if (codSelec === "1") {
+        //    $('#tipoCodigoModal').show();
+        //}
+        //else
+            if (codSelec === "2") {
             $('#tipoMarcaModal').show();
         }
     }
@@ -315,7 +303,8 @@
         DatosSeleccionados = [];
         $.each(NuevosDatosSeleccionados, function (key, value) {
             var obj = {
-                "Cod_Prod": value.Cod_Prod,
+                "IdProducto": value.IdProducto,
+                "Tipo_Prod": value.Tipo_Prod,
                 "Marca_Prod": value.Marca_Prod,
                 "Precio_Prod": value.Precio_Prod
             };
@@ -329,16 +318,25 @@
 
         var url = "Ventas/GetProducto";
         var parms = {
-            Cod_Prod: $txtCodigoModal.val().trim(),
             Marca_Prod: $txtMarcaModal.val().trim()
         };
         var columns = [
-            { data: "Cod_Prod" },
-            { data: "Stock_Prod" },
+            { data: "Tipo_Prod" },
             { data: "Marca_Prod" },
+            { data: "Stock_Prod" },            
             { data: "Precio_Prod" }
         ];
         var columnDefs = [
+            {
+                "targets": [0],
+                'render': function (data, type, full, meta) {
+                    data === 1 ? msj = "Polo" : data === 2 ? msj = "Vestido" : data === 3 ? msj = "Cafarena" :
+                    data === 4 ? msj = "Chompa" : data === 5 ? msj = "Short" : data === 6 ? msj = "Pantalon" :
+                    data === 7 ? msj = "Falda" : data === 8 ? msj = "Zapatilla" : data === 9 ? msj = "Blusa" :
+                    data === 10 ? msj = "Camisa" : msj = "";
+                    return msj;
+                }
+            },
             {
                 "targets": [3],
                 "className": "text-right",
@@ -362,9 +360,10 @@
 
         $.each(NuevosDatosSeleccionados, function (key, valueDS) {
             $.each(DatosSeleccionados, function (key, valueNDS) {
-                if (valueNDS.Cod_Prod !== valueDS.Cod_Prod) {
+                if (valueNDS.IdProducto !== valueDS.IdProducto) {
                     var obj = {
-                        "Cod_Prod": valueNDS.Cod_Prod,
+                        "IdProducto": valueNDS.IdProducto,
+                        "Tipo_Prod": valueNDS.Tipo_Prod,
                         "Marca_Prod": valueNDS.Marca_Prod,
                         "Precio_Prod": valueNDS.Precio_Prod
                     };
@@ -395,7 +394,7 @@
 
     function $cboModalTalla_change() {
         var obj = {
-            "Cod_Prod": $txtModalCodigo.val()
+            "IdProducto": $txtModalCodigo.val()
         };
         var method = "POST";
         var url = "Ventas/TallasProducto";
@@ -462,7 +461,7 @@
                 app.Message.Info("Aviso", "No hay ventas con esas fechas", "Aceptar");
             }
         };
-        app.CallAjax("POST", "Ventas/GetAllVentasMayor", data, fnDoneCallback);
+        app.CallAjax("POST", "Ventas/GetAllVentas", data, fnDoneCallback);
     }
 
     function ValidarGenerarExcel() {
@@ -477,114 +476,59 @@
     function EliminarProductoSeleccionado(row) {
 
         var data = app.GetValueRowCellOfDataTable($tblListadoProductosSeleccionados, row);
-        var ProductosSeleccionadas = [];
-        var fnAceptarCallback = function () {
+        var ProductosSeleccionadas = [];   
 
-            NuevosDatosSeleccionados.map(function (v, i) {
-                ProductosSeleccionadas.push(v);
-            });
-
-            var index = $.inArray(data, NuevosDatosSeleccionados);
-            ProductosSeleccionadas.splice(index, 1);
-
-            NuevosDatosSeleccionados = [];
-            $.each(ProductosSeleccionadas, function (index, value) {
-                var obj = {
-                    "Cod_Prod": value.Cod_Prod,
-                    "Marca_Prod": value.Marca_Prod,
-                    "Precio_Prod": value.Precio_Prod
-                };
-                NuevosDatosSeleccionados.push(obj);
-            });
-
-            Limpiar_ProductosSeleccionados();
-            LoadProductosSeleccionados(NuevosDatosSeleccionados);
-            EventoSeleccionProducto();
-
-            var cant_tallas = parseInt(0);
-            var TallasSeleccionadas = [];
-            DatosSeleccionadosDetalle.Data.map(function (v, i) {
-                if (v.Cod_Prod === data.Cod_Prod) {
-                    cant_tallas++;
-                }
-                TallasSeleccionadas.push(v);
-            });
-
-            for (var i = 0; i < cant_tallas; i++) {
-                $.each(TallasSeleccionadas, function (i, item) {
-                    if (item.Cod_Prod === data.Cod_Prod) {
-                        TallasSeleccionadas.splice(i, 1);
-                        return false;
-                    }
-                });
-            }
-
-            DatosSeleccionadosDetalle = { Data: [] };
-            $.each(TallasSeleccionadas, function (index, value) {
-                var obj = {
-                    "Cod_Prod": value.Cod_Prod,
-                    "Talla": value.Talla,
-                    "Cantidad": value.Cantidad,
-                    "Precio_Prod": value.Precio_Prod
-                };
-                DatosSeleccionadosDetalle.Data.push(obj);
-            });
-            LoadTallasSeleccionadas(DatosSeleccionadosDetalle);
-            CalcularPrecioProductos();
-
-        };
-
-        var cant_detalle = parseInt(0);
-        $.each(DatosSeleccionadosDetalle.Data, function (key, value) {
-            if (value.Cod_Prod === data.Cod_Prod) {
-                cant_detalle++;
-            }
+        NuevosDatosSeleccionados.map(function (v, i) {
+            ProductosSeleccionadas.push(v);
         });
 
-        if (cant_detalle > 0) {
-            app.Message.Confirm("Aviso", "Esta seguro que desea eliminar el producto, se eliminaran las tallas asociadas?", "Aceptar", "Cancelar", fnAceptarCallback, null);
-            return false;
-        }
-        else {
+        var index = $.inArray(data, NuevosDatosSeleccionados);
+        ProductosSeleccionadas.splice(index, 1);
 
-            NuevosDatosSeleccionados.map(function (v, i) {
-                ProductosSeleccionadas.push(v);
-            });
+        NuevosDatosSeleccionados = [];
+        $.each(ProductosSeleccionadas, function (index, value) {
+            var obj = {
+                "IdProducto": value.IdProducto,
+                "Tipo_Prod": value.Tipo_Prod,
+                "Marca_Prod": value.Marca_Prod,
+                "Precio_Prod": value.Precio_Prod
+            };
+            NuevosDatosSeleccionados.push(obj);
+        });
 
-            var index = $.inArray(data, NuevosDatosSeleccionados);
-            ProductosSeleccionadas.splice(index, 1);
-
-            NuevosDatosSeleccionados = [];
-            $.each(ProductosSeleccionadas, function (index, value) {
-                var obj = {
-                    "Cod_Prod": value.Cod_Prod,
-                    "Marca_Prod": value.Marca_Prod,
-                    "Precio_Prod": value.Precio_Prod
-                };
-                NuevosDatosSeleccionados.push(obj);
-            });
-
-            Limpiar_ProductosSeleccionados();
-            LoadProductosSeleccionados(NuevosDatosSeleccionados);
-            EventoSeleccionProducto();
-        }
-
-
-
-
+        Limpiar_ProductosSeleccionados();
+        LoadProductosSeleccionados(NuevosDatosSeleccionados);
+        EventoSeleccionProducto();
+                  
     }
 
     function LoadProductosSeleccionados(data) {
-        var table = $tblListadoProductosSeleccionados.DataTable({
+            $tblListadoProductosSeleccionados.DataTable({
             data: data,
             columns: [
-                { data: "Cod_Prod" },
+                { data: "Tipo_Prod" },
                 { data: "Marca_Prod" },
                 { data: "Precio_Prod" },
-                { data: "Cod_Prod" }
+                { data: "Tipo_Prod" }
             ],
             columnDefs: [
-
+                {
+                    "targets": [0],
+                    'render': function (data, type, full, meta) {
+                        data === 1 ? msj = "Polo" : data === 2 ? msj = "Vestido" : data === 3 ? msj = "Cafarena" :
+                        data === 4 ? msj = "Chompa" : data === 5 ? msj = "Short" : data === 6 ? msj = "Pantalon" :
+                        data === 7 ? msj = "Falda" : data === 8 ? msj = "Zapatilla" : data === 9 ? msj = "Blusa" :
+                        data === 10 ? msj = "Camisa" : msj = "";
+                        return msj;
+                    }
+                },
+                {
+                    "targets": [2],
+                    "className": "text-right",
+                    'render': function (data, type, full, meta) {
+                        return '' + app.FormatNumber(data) + '';
+                    }
+                },
                 {
                     "targets": [3],
                     "visible": true,
@@ -616,7 +560,7 @@
         table.on('select', function (e, dt, type, indexes) {
             var row = table.rows(indexes).data().toArray();
             if (row.length > 0) {
-                $txtModalCodigo.val(row[0].Cod_Prod);
+                $txtModalCodigo.val(row[0].IdProducto);
                 Cargar_ComboTallas();
             }
         }).on('deselect', function (e, dt, type, indexes) {
@@ -631,7 +575,7 @@
     function Cargar_ComboTallas() {
 
         var obj = {
-            "Cod_Prod": $txtModalCodigo.val()
+            "IdProducto": $txtModalCodigo.val()
         };
         var method = "POST";
         var url = "Ventas/TallasProducto";
@@ -661,7 +605,7 @@
         var precio_prod = ObtenerPrecioVenta();
 
         var obj = {
-            "Cod_Prod": parseInt($txtModalCodigo.val()),
+            "IdProducto": parseInt($txtModalCodigo.val()),
             "Talla": $cboModalTalla.val(),
             "Cantidad": parseInt($txtModalCantidad.val()),
             "Precio_Prod": precio_prod
@@ -683,16 +627,22 @@
 
     function LoadTallasSeleccionadas(DatosSeleccionadosDetalle) {
         var columns = [
-            { data: "Cod_Prod" },
             { data: "Talla" },
             { data: "Cantidad" },
             { data: "Precio_Prod" },
-            { data: "Cod_Prod" }
+            { data: "IdProducto" }
         ];
         var columnDefs = [
 
             {
-                "targets": [4],
+                "targets": [2],
+                "className": "text-right",
+                'render': function (data, type, full, meta) {
+                    return '' + app.FormatNumber(data) + '';
+                }
+            },
+            {
+                "targets": [3],
                 "visible": true,
                 "className": "text-center",
                 'render': function (data, type, full, meta) {
@@ -719,7 +669,7 @@
         });
 
         $.each(TallasSeleccionadas, function (i, item) {
-            if (item.Cod_Prod === data.Cod_Prod && item.Talla === data.Talla) {
+            if (item.IdProducto === data.IdProducto && item.Talla === data.Talla) {
                 TallasSeleccionadas.splice(i, 1);
                 return false;
             }
@@ -728,7 +678,7 @@
         DatosSeleccionadosDetalle = { Data: [] };
         $.each(TallasSeleccionadas, function (index, value) {
             var obj = {
-                "Cod_Prod": value.Cod_Prod,
+                "IdProducto": value.IdProducto,
                 "Talla": value.Talla,
                 "Cantidad": value.Cantidad,
                 "Precio_Prod": value.Precio_Prod
@@ -743,7 +693,7 @@
 
     function ValidarAgregarTalla() {
         var msj = null;
-        if ($cboModalTalla.val() === -1) {
+        if ($cboModalTalla.val() === "-1") {
             msj = "Ingrese la talla.";
             return msj;
         }
@@ -757,7 +707,7 @@
         $.each(DatosSeleccionadosDetalle.Data, function (key, value) {
             var obj = {
                 "Talla": value.Talla,
-                "Cod_Prod": value.Cod_Prod
+                "IdProducto": value.IdProducto
             };
             TallasSeleccionadas.push(obj);
         });
@@ -765,13 +715,13 @@
         var TallaSeleccionada = [];
         var objselector = {
             "Talla": $cboModalTalla.val(),
-            "Cod_Prod": $txtModalCodigo.val()
+            "IdProducto": $txtModalCodigo.val()
         };
         TallaSeleccionada.push(objselector);
 
         for (var i = 0; i < TallasSeleccionadas.length; i++) {
             if (TallasSeleccionadas[i].Talla === TallaSeleccionada[0].Talla &&
-                TallasSeleccionadas[i].Cod_Prod === TallaSeleccionada[0].Cod_Prod) {
+                TallasSeleccionadas[i].IdProducto === TallaSeleccionada[0].IdProducto) {
                 msj = "No se puede ingresar la misma talla.";
                 $txtModalCantidad.val('');
                 return msj;
@@ -790,7 +740,7 @@
     function ObtenerPrecioVenta() {
         var precio_prod = 0;
         $.each(NuevosDatosSeleccionados, function (key, value) {
-            if (parseInt($txtModalCodigo.val()) === value.Cod_Prod) {
+            if (parseInt($txtModalCodigo.val()) === value.IdProducto) {
                 precio_prod = value.Precio_Prod;
             }
         });
@@ -819,7 +769,7 @@
             precio_productos = precio_productos + (value.Precio_Prod * value.Cantidad);
         });
 
-        $txtModalPrecioProducto.val(precio_productos);
+        $txtModalPrecioProducto.val(app.FormatNumber(precio_productos));
 
     }
 
@@ -843,17 +793,38 @@
 
     function LoadTallaMayor(data) {
         var columns = [
-            { data: "Talla" },
-            { data: "Cod_Prod" },
+            { data: "Producto.Tipo_Prod" },
             { data: "Producto.Marca_Prod" },
+            { data: "Talla" },                   
             { data: "Cantidad" },
             { data: "Precio_Prod" }
+        ];
+
+        var columnDefs = [
+            {
+                "targets": [0],
+                'render': function (data, type, full, meta) {
+                    data === 1 ? msj = "Polo" : data === 2 ? msj = "Vestido" : data === 3 ? msj = "Cafarena" :
+                    data === 4 ? msj = "Chompa" : data === 5 ? msj = "Short" : data === 6 ? msj = "Pantalon" :
+                    data === 7 ? msj = "Falda" : data === 8 ? msj = "Zapatilla" : data === 9 ? msj = "Blusa" :
+                    data === 10 ? msj = "Camisa" : msj = "";
+                    return msj;
+                }
+            },
+            {
+                "targets": [4],
+                "className": "text-right",
+                'render': function (data, type, full, meta) {
+                    return '' + app.FormatNumber(data) + '';
+                }
+            }
         ];
 
         var filtros = {
             pageLength: 10
         };
-        app.FillDataTable($tblTallasVenta, data, columns, null, "#tblTallasVenta", filtros, null, null, null, null, true);
+
+        app.FillDataTable($tblTallasVenta, data, columns, columnDefs, "#tblTallasVenta", filtros, null, null, null, null, true);
     }
 
     return {

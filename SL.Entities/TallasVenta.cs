@@ -8,7 +8,7 @@ namespace SL.Entities
 {
     public class TallasVenta
     {
-        public int Cod_Prod { get; set; }
+        public int IdProducto { get; set; }
         public string Talla { get; set; }
         public int Cantidad { get; set; }
         public double Precio_Prod { get; set; }
