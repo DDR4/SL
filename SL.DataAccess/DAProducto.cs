@@ -18,6 +18,7 @@ namespace SL.DataAccess
             {
                 connection.Open();
                 var parm = new DynamicParameters();
+                parm.Add("@Tipo_Prod", obj.Tipo_Prod);
                 parm.Add("@Marca_Prod", obj.Marca_Prod);
                 parm.Add("@Stock_Prod", obj.Stock_Prod);
                 parm.Add("@Estado", obj.Estado_Prod);

@@ -38,28 +38,10 @@
                                     <option value="1">Fecha </option>
                                 </select>
                             </div>
-                            <div id="tipoCodigo" style="display:none;">
-                                <div class="form-group col-md-2">
-                                    <label for="txtCodigo">C&oacute;digo Producto </label>
-                                    <input type="text" class="form-control" id="txtCodigo">
-                                </div>
-                            </div>
                             <div id="tipoFecha" style="display:none;">
                                 <div class="form-group col-md-2">
                                     <label for="txtFecha">Fecha</label>
                                     <input type='text' class="form-control" id="txtFecha" readonly />
-                                </div>
-                            </div>
-                            <div id="tipoMarca" style="display:none;">
-                                <div class="form-group col-md-2">
-                                    <label for="txtMarca">Marca</label>
-                                    <input type="text" class="form-control" id="txtMarca">
-                                </div>
-                            </div>
-                            <div id="tipoTalla" style="display:none;">
-                                <div class="form-group col-md-2">
-                                    <label for="txtTalla">Talla</label>
-                                    <input type="text" class="form-control" id="txtTalla">
                                 </div>
                             </div>
 
@@ -229,6 +211,8 @@
                                     <table id="tblListadoTallas" class="table table-bordered table-striped table-hover table-condensed" style="width:100%;">
                                         <thead>
                                             <tr>
+                                                <th width="15%;">Tipo</th>
+                                                <th width="15%;">Marca</th>
                                                 <th width="15%;">Nro Talla</th>
                                                 <th width="15%;">Cantidad</th>
                                                 <th width="15%;">Precio</th>
@@ -298,17 +282,31 @@
                         <label for="cboTipoBusquedaModal">Tipo b&uacute;squeda</label>
                         <select class="form-control input-sm" style="width:100%;" id="cboTipoBusquedaModal">
                             <option value="0">Todos</option>
+                            <option value="1">Tipo</option>
                             <option value="2">Marca</option>
                         </select>
                     </div>
-                    <div id="tipoCodigoModal" style="display:none;">
+
+                    <div id="tipoProductoModal" style="display:none;">
                         <div class="form-group col-md-2">
-                            <label for="txtCodigoModal">C&oacute;digo</label>
-                            <input type="text" class="form-control input-sm" id="txtCodigoModal">
+                            <label for="cboTipoProductoModal">Tipo de Producto</label>
+                            <select class="form-control input-sm" id="cboTipoProductoModal">
+                                <option value="0">Seleccionar</option>
+                                <option value="1">Polo</option>
+                                <option value="2">Vestido</option>
+                                <option value="3">Cafarena</option>
+                                <option value="4">Chompa</option>
+                                <option value="5">Short</option>
+                                <option value="6">Pantalon</option>
+                                <option value="7">Falda</option>
+                                <option value="8">Zapatilla</option>
+                                <option value="9">Blusa</option>
+                                <option value="10">Camisa</option>
+                            </select>
                         </div>
                     </div>
                     <div id="tipoMarcaModal" style="display:none;">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-2">
                             <label for="txtMarcaModal">Marca</label>
                             <input type="text" class="form-control input-sm" id="txtMarcaModal">
                         </div>

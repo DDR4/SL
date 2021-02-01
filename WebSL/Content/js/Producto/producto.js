@@ -3,12 +3,14 @@
     var $btnNuevaProducto = $('#btnNuevaProducto');
     var $cboTipoBusqueda = $('#cboTipoBusqueda');
 
-    var $tipoCodigo = $('#tipoCodigo');
+    var $tipoProducto = $('#tipoProducto');
     var $tipoMarca = $('#tipoMarca');
     var $tipoEstado = $('#tipoEstado');
 
+    var $cboTipoProducto = $('#cboTipoProducto');
     var $txtMarca = $('#txtMarca');
     var $cboEstado = $('#cboEstado');
+
 
     var $btnBuscar = $('#btnBuscar');
 
@@ -90,16 +92,18 @@
 
     function $cboTipoBusqueda_change() {
         var codSelec = $(this).val();
-        //$('#form1')[0].reset();
-        $tipoCodigo.hide();
+        $tipoProducto.hide();
         $tipoMarca.hide();
         $tipoEstado.hide();
 
+        $cboTipoProducto.val(0);
         $txtMarca.val("");
         $cboEstado.val(0);
 
-  
-        if (codSelec === "2") {
+        if (codSelec === "1") {
+            $tipoProducto.show();
+        }
+        else if (codSelec === "2") {
             $tipoMarca.show();
         }
         else if (codSelec === "3") {
@@ -181,7 +185,7 @@
         msg += app.ValidarCampo($cboModalEstacion.val(), "• La estación.");
         msg += app.ValidarCampo($txtModalMarca.val(), "• La marca.");
         msg += app.ValidarCampo($txtModalPrecio.val(), "• El precio.");
-        msg += app.ValidarCampo($cboModalTipoProducto.val(), "• El tipo de producto.");
+        msg += app.ValidarCampo($cboModalTipoProducto.val(), "• El tipo.");
         msg += app.ValidarCampo($cboModalEstado.val(), "• El estado.");
         if (dataTallas.Data.length === 0) {
             msg += "• Las tallas.";
@@ -204,10 +208,14 @@
 
         var vcboTipoBusqueda = parseInt($cboTipoBusqueda.val());
 
+        var Tipo_Prod = $cboTipoProducto.val().trim();
         var Marca_Prod = $txtMarca.val().trim();
         var Estado_Prod = $cboEstado.val().trim();
 
         switch (vcboTipoBusqueda) {
+            case 1:
+                msg += app.ValidarCampo(Tipo_Prod, "• El tipo.");
+                break;
             case 2:
                 msg += app.ValidarCampo(Marca_Prod, "• La marca.");
                 break;
@@ -264,6 +272,7 @@
 
     function GetProducto() {
         var parms = {
+            Tipo_Prod: $cboTipoProducto.val(),
             Marca_Prod: $txtMarca.val(),
             Estado_Prod: $cboEstado.val()
         };
