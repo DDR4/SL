@@ -113,14 +113,5 @@ namespace WebSL.Controllers
 
         }
 
-        //public ActionResult Registrar(Usuario obj)
-        //{
-        //    var bussingLogic = new SL.BusinessLogic.BLUsuario();
-        //    //var obj = new Usuario { Nombre_Usu = m.UserName, Pass_Usu = m.Password };
-        //    var response = bussingLogic.Registrar(obj);
-
-        //    return Json(response);
-        //}
-
     }
 }
