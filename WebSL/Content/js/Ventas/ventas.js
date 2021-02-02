@@ -350,21 +350,25 @@
 
     function $btnSaveProducto_click() {
 
-        NuevosDatosSeleccionados = $tblListadoProductos.DataTable().rows({ selected: true }).data().toArray();
+        NuevosDatosSeleccionados = $tblListadoProductos.DataTable().rows({ selected: true }).data().toArray();  
 
-        $.each(NuevosDatosSeleccionados, function (key, valueDS) {
-            $.each(DatosSeleccionados, function (key, valueNDS) {
-                if (valueNDS.IdProducto !== valueDS.IdProducto) {
-                    var obj = {
-                        "IdProducto": valueNDS.IdProducto,
-                        "Tipo_Prod": valueNDS.Tipo_Prod,
-                        "Marca_Prod": valueNDS.Marca_Prod,
-                        "Precio_Prod": valueNDS.Precio_Prod
-                    };
-                    NuevosDatosSeleccionados.push(obj);
-                }
-            });
+        $.each(DatosSeleccionados, function (key, valueNDS) {
+                var obj = {
+                    "IdProducto": valueNDS.IdProducto,
+                    "Tipo_Prod": valueNDS.Tipo_Prod,
+                    "Marca_Prod": valueNDS.Marca_Prod,
+                    "Precio_Prod": valueNDS.Precio_Prod
+                };
+                NuevosDatosSeleccionados.push(obj);
         });
+
+        var hash = {};
+        NuevosDatosSeleccionados = NuevosDatosSeleccionados.filter(function (current) {
+            var exists = !hash[current.IdProducto];
+            hash[current.IdProducto] = true;
+            return exists;
+        });   
+
         $tblListadoProductosSeleccionados.DataTable().clear().draw();
         LoadProductosSeleccionados(NuevosDatosSeleccionados);
         EventoSeleccionProducto();
