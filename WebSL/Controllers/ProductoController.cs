@@ -150,7 +150,7 @@ namespace WebSL.Controllers
 
 
             string[] Cabezeras = {
-                    "Tipo de Producto", "Marca", "Stock", "Precio", "Estado", "Fecha           "
+                    "Tipo de Producto", "Marca", "Stock", "Precio", "Estado", "Fecha"
                 };
 
             // Se crea la primera fila para las cabceras.
@@ -160,11 +160,12 @@ namespace WebSL.Controllers
             foreach (var item in Cabezeras)
             {
                 // Se crea celdas y se agrega las cabeceras
-                cell = row.CreateCell(cellnum++);
+                cell = row.CreateCell(cellnum);
                 cell.SetCellValue(item);
                 cell.CellStyle = styleCab;
 
                 sheet.AutoSizeColumn(cellnum);
+                cellnum++;
             }
 
             // Creacion del estilo de la letra para la data.
@@ -183,10 +184,13 @@ namespace WebSL.Controllers
                 row = sheet.CreateRow(rownum++);
 
                 sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Tipo_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
+                AddValue(row, cellnum++, item.Tipo_Prod == 1 ? "Polo" : item.Tipo_Prod == 2 ? "Vestido"
+                : item.Tipo_Prod == 3 ? "Cafarena" : item.Tipo_Prod == 4 ? "Chompa" : item.Tipo_Prod == 5 ? "Short"
+                : item.Tipo_Prod == 6 ? "Pantalon" : item.Tipo_Prod == 7 ? "Falda" : item.Tipo_Prod == 8 ? "Zapatilla"
+                : item.Tipo_Prod == 9 ? "Blusa" : item.Tipo_Prod == 10 ? "Camisa": "".ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Marca_Prod, styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Stock_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Precio_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
+                AddValue(row, cellnum++, item.Precio_Prod.ToString("F2"), styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.Estado_Prod == 1 ? "Activo" : "Inactivo".ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
                 AddValue(row, cellnum++, item.FechaDesde.ToString().Substring(6, 2) + "/" + item.FechaDesde.ToString().Substring(4, 2) + "/" + item.FechaDesde.ToString().Substring(0, 4), styleBody); sheet.AutoSizeColumn(cellnum);
 
