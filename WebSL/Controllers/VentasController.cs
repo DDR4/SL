@@ -124,7 +124,7 @@ namespace WebCalzadosAnnies.Controllers
 
             var tallasxml = obj.Tallas_Venta.Select(i => new XElement("TallaVenta",
                        new XElement("Talla", i.Talla),
-                       new XElement("Cod_prod", i.Cod_Prod),
+                       new XElement("IdProducto", i.IdProducto),
                        new XElement("Cantidad", i.Cantidad),
                        new XElement("Precio", i.Precio_Prod)));
             obj.Talla_Ventas = new XDocument(new XDeclaration("1.0", "utf-8", "yes"), new XElement("TallasVenta", tallasxml));
@@ -134,10 +134,10 @@ namespace WebCalzadosAnnies.Controllers
             return Json(response);
         }
 
-        public JsonResult TallasProducto(string Cod_Prod)
+        public JsonResult TallasProducto(string IdProducto)
         {
             var bussingLogic = new SL.BusinessLogic.BLProducto();
-            var response = bussingLogic.TallasProducto(Cod_Prod);
+            var response = bussingLogic.TallasProducto(IdProducto);
             var result = new Response<IEnumerable<Tallas>>(response.Data.Where(x => x.Cantidad > 0));
             return Json(result);
 
@@ -228,11 +228,12 @@ namespace WebCalzadosAnnies.Controllers
             foreach (var item in Cabezeras)
             {
                 // Se crea celdas y se agrega las cabeceras
-                cell = row.CreateCell(cellnum++);
+                cell = row.CreateCell(cellnum);
                 cell.SetCellValue(item);
                 cell.CellStyle = styleCab;
 
                 sheet.AutoSizeColumn(cellnum);
+                cellnum++;
             }
 
             // Creacion del estilo de la letra para la data.
@@ -250,14 +251,13 @@ namespace WebCalzadosAnnies.Controllers
                 cellnum = 0;
                 row = sheet.CreateRow(rownum++);
 
-                sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Cod_Venta.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Producto.Marca_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Precio_Prod.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Precio_Venta.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Descuento_Venta.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Precio_Final.ToString(), styleBody); sheet.AutoSizeColumn(cellnum);
-                AddValue(row, cellnum++, item.Fecha.ToString().Substring(6, 2) + "/" + item.Fecha.ToString().Substring(4, 2) + "/" + item.Fecha.ToString().Substring(0, 4), styleBody); sheet.AutoSizeColumn(cellnum);
+                AddValue(row, cellnum++, item.Cod_Venta.ToString(), styleBody, sheet);
+                AddValue(row, cellnum++, item.Producto.Marca_Prod.ToString(), styleBody, sheet);
+                AddValue(row, cellnum++, item.Precio_Prod.ToString("F2"), styleBody, sheet); 
+                AddValue(row, cellnum++, item.Precio_Venta.ToString("F2"), styleBody, sheet);
+                AddValue(row, cellnum++, item.Descuento_Venta.ToString("F2"), styleBody, sheet);
+                AddValue(row, cellnum++, item.Precio_Final.ToString("F2"), styleBody, sheet); 
+                AddValue(row, cellnum++, item.Fecha.ToString().Substring(6, 2) + "/" + item.Fecha.ToString().Substring(4, 2) + "/" + item.Fecha.ToString().Substring(0, 4), styleBody, sheet);
 
             }
 
@@ -270,13 +270,13 @@ namespace WebCalzadosAnnies.Controllers
             Response.End();
         }
 
-        public void AddValue(IRow row, int cellnum, string value, ICellStyle styleBody)
+        public void AddValue(IRow row, int cellnum, string value, ICellStyle styleBody, ISheet sheet)
         {
-            ICell cell;
+            ICell cell; 
             cell = row.CreateCell(cellnum);
             cell.SetCellValue(value);
             cell.CellStyle = styleBody;
-
+            sheet.AutoSizeColumn(cellnum);
         }
 
     }

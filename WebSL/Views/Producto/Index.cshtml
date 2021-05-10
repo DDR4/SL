@@ -36,19 +36,31 @@
                                 <label for="cboTipoBusqueda">Tipo b&uacute;squeda</label>
                                 <select class="form-control input-sm" style="width:100%;" id="cboTipoBusqueda">
                                     <option value="0">Todos</option>
-                                    <option value="1">C&oacute;digo</option>
+                                    <option value="1">Tipo</option>
                                     <option value="2">Marca</option>
                                     <option value="3">Estado</option>
                                 </select>
                             </div>
-                            <div id="tipoCodigo" style="display:none;">
+                            <div id="tipoProducto" style="display:none;">
                                 <div class="form-group col-md-2">
-                                    <label for="txtCodigo">C&oacute;digo</label>
-                                    <input type="text" class="form-control input-sm" id="txtCodigo">
+                                    <label for="cboTipoProducto">Tipo de Producto</label>
+                                    <select class="form-control input-sm" id="cboTipoProducto">
+                                        <option value="0">Seleccionar</option>
+                                        <option value="1">Polo</option>
+                                        <option value="2">Vestido</option>
+                                        <option value="3">Cafarena</option>
+                                        <option value="4">Chompa</option>
+                                        <option value="5">Short</option>
+                                        <option value="6">Pantalon</option>
+                                        <option value="7">Falda</option>
+                                        <option value="8">Zapatilla</option>
+                                        <option value="9">Blusa</option>
+                                        <option value="10">Camisa</option>
+                                    </select>
                                 </div>
                             </div>
                             <div id="tipoMarca" style="display:none;">
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-2">
                                     <label for="txtMarca">Marca</label>
                                     <input type="text" class="form-control input-sm" id="txtMarca">
                                 </div>
@@ -117,9 +129,9 @@
                                 <table id="tblListadoProductos" class="table table-bordered table-striped table-hover table-condensed" style="width:100%;">
                                     <thead>
                                         <tr>
-                                            <th width="12%;">C&oacute;digo Producto</th>
-                                            <th width="10%;">Stock</th>
+                                            <th width="10%;">Tipo de Producto</th>
                                             <th width="10%;">Marca</th>
+                                            <th width="10%;">Stock</th>
                                             <th width="10%;">Precio</th>
                                             <th width="10%;">Estado</th>
                                             <th width="8%;">Fecha</th>
@@ -150,8 +162,20 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="txtModalCodigo">C&oacute;digo Producto</label>
-                                <input class="form-control input-sm" type="text" id="txtModalCodigo" maxlength="20" />
+                                <label for="cboModalTipoProducto">Tipo de Producto</label>
+                                <select class="form-control" id="cboModalTipoProducto">
+                                    <option value="0">Seleccionar</option>
+                                    <option value="1">Polo</option>
+                                    <option value="2">Vestido</option>
+                                    <option value="3">Cafarena</option>
+                                    <option value="4">Chompa</option>
+                                    <option value="5">Short</option>
+                                    <option value="6">Pantalon</option>
+                                    <option value="7">Falda</option>
+                                    <option value="8">Zapatilla</option>
+                                    <option value="9">Blusa</option>
+                                    <option value="10">Camisa</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -173,14 +197,11 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="cboModalTipoProducto">Tipo de Producto</label>
-                                <select class="form-control" id="cboModalTipoProducto">
+                                <label for="cboModalEstacion">Estaci&oacute;n</label>
+                                <select class="form-control" id="cboModalEstacion">
                                     <option value="0">Seleccionar</option>
                                     <option value="1">Verano</option>
                                     <option value="2">Invierno</option>
-                                    <option value="3">Primavera</option>
-                                    <option value="4">Otoño</option>
-
                                 </select>
                             </div>
                         </div>

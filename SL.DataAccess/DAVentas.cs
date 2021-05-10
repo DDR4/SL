@@ -91,10 +91,10 @@ namespace SL.DataAccess
                      .Select(m => m as IDictionary<string, object>)
                      .Select(n => new TallasVenta
                      {
-                         Talla = n.Single(d => d.Key.Equals("Talla")).Value.Parse<string>(),
-                         Cod_Prod = n.Single(d => d.Key.Equals("Cod_Prod")).Value.Parse<int>(),
+                         Talla = n.Single(d => d.Key.Equals("Talla")).Value.Parse<string>(),                      
                          Producto = new Producto
                          {
+                             Tipo_Prod = n.Single(d => d.Key.Equals("Tipo_Prod")).Value.Parse<int>(),
                              Marca_Prod = n.Single(d => d.Key.Equals("Marca_Prod")).Value.Parse<string>(),
                          },
                          Cantidad = n.Single(d => d.Key.Equals("Cantidad")).Value.Parse<int>(),
@@ -145,10 +145,10 @@ namespace SL.DataAccess
                               {
                                   Marca_Prod = n.Single(d => d.Key.Equals("Marca_Prod")).Value.Parse<string>(),
                               },
-                              Precio_Prod = n.Single(d => d.Key.Equals("PrecioProducto")).Value.Parse<int>(),
-                              Precio_Venta = n.Single(d => d.Key.Equals("PrecioVenta")).Value.Parse<int>(),
+                              Precio_Prod = n.Single(d => d.Key.Equals("Precio_Prod")).Value.Parse<int>(),
+                              Precio_Venta = n.Single(d => d.Key.Equals("Precio_Venta")).Value.Parse<int>(),
                               Descuento_Venta = n.Single(d => d.Key.Equals("Descuento")).Value.Parse<int>(),
-                              Precio_Final = n.Single(d => d.Key.Equals("PrecioTotal")).Value.Parse<int>(),
+                              Precio_Final = n.Single(d => d.Key.Equals("Precio_Total")).Value.Parse<int>(),
                               Fecha = n.Single(d => d.Key.Equals("Fecha")).Value.Parse<int>()
                           });
 

@@ -6,3 +6,5 @@
 /SL.BusinessLogic/bin/Release/Dapper.dll
 *.dll
 *.pdb
+*.lock
+*.cache

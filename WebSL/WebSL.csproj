@@ -229,7 +229,6 @@
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\Producto\producto.js" />
     <Content Include="Content\js\Usuario\usuario.js" />
-    <Content Include="Content\js\Usuario\registro.js" />
     <Content Include="Content\js\Ventas\ventas.js" />
     <Content Include="Content\lib\adminLTE\css\adminLTE.min.css" />
     <Content Include="Content\lib\adminLTE\js\adminlte.js" />
